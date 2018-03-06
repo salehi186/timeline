@@ -1,0 +1,118 @@
+.btn {
+    background-color: rgb(255, 115, 0); /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: rgb(255, 196, 0);
+}
+
+
+.story-card {
+    opacity: 0.9;
+    border-radius: 5px 5px 0 0;
+    transition: 1s;
+    position: relative;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 150px;
+    box-shadow: 2px 2px darkorange;
+    box-shadow: 0px 1px 1px 1px black;
+    &:hover {
+        box-shadow: 0px 10px 10px 0px black;
+        z-index: 40 !important;
+        overflow: visible;
+        height: auto;
+        background-color: white; //min-height:200px;
+        //min-width:200px;
+        //height:auto;
+    }
+    .front,
+    .back {
+        //padding-top:1em;
+        top: 1.5em;
+        left: 0px;
+        bottom: 0px;
+        background-color: lightgoldenrodyellow;
+        width: 100%; //height:100%;
+        transition: 2s;
+        flex-grow: 1;
+        height: 0px;
+    }
+    .title-bar {
+        
+        top: 0px;
+        left: 0px;
+        background: darkorange;
+        color: white;
+        font-weight: bolder;
+        white-space: nowrap;
+        border: solid black 1px;
+        border-radius: inherit;
+    }
+    .card-switch {
+        position: absolute;
+        z-index: 1;
+        width: 40px;
+        height: 40px;
+        top: 0px;
+        left: 0px;
+        opacity: 0.01;
+    }
+    .card-switch:checked {
+        &+.title-bar .card-switch-label {
+            transition: 1s;
+            transform: rotate(360deg);
+            z-index: -1;
+        }
+        &~.front {
+            opacity: 0;
+            flex-grow: 0;
+            height: 0;
+        }
+        &~.back {
+            opacity: 1;
+            flex-grow: 1;
+            height: auto;
+        }
+    }
+    .front {
+        display: flex;
+        flex-grow: row;
+        height: auto;
+        .card-head {
+            .user-image {
+                width: 100px;
+                height: 100px;
+            }
+            background-image: linear-gradient(#5187c4, #ffffff);
+            background-size: auto 200%;
+            background-position: 0 100%;
+            transition: background-position 0.5s;
+            &:hover {
+                background-position: 0 0;
+            }
+        }
+        .card-body {}
+    }
+    .back {
+        padding-left: 5px;
+        .header {
+            padding-left: -3px;
+            text-shadow: 2px 1px lightgray;
+        }
+        overflow:auto;
+        background-color: #1e3323;
+        color: #dff2de;
+        opacity: 0;
+        height: 0px;
+        flex-grow: 0;
+    }
+}

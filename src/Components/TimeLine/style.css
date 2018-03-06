@@ -1,0 +1,35 @@
+.time-line {
+  z-index: 1;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.4);
+  color: black;
+  font-weight: bold;
+  overflow: auto; }
+  .time-line .weekends {
+    border-left: solid red 2px;
+    color: red; }
+  .time-line span {
+    position: relative;
+    border-left: solid white 1px;
+    padding-left: 2px;
+    display: inline;
+    transform-origin: left;
+    overflow: hidden; }
+    .time-line span:hover {
+      background: #15ff00;
+      opacity: 0.5; }
+    .time-line span:before {
+      position: absolute;
+      bottom: 1ex;
+      left: 1em;
+      content: attr(value);
+      transform: rotate(-90deg);
+      transform-origin: left bottom;
+      display: inline-block;
+      width: 10px;
+      overflow: visible;
+      padding: auto; }

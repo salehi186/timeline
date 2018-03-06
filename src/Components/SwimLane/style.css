@@ -1,0 +1,18 @@
+.swim-lane {
+  padding: 0;
+  z-index: 10;
+  background: #64c896;
+  width: 100%;
+  height: auto;
+  border: black solid 2px; }
+  .swim-lane .swim-lane-title {
+    background-color: white;
+    grid-column-end: span 3;
+    color: black;
+    z-index: 2;
+    overflow: hidden;
+    font-weight: bolder; }
+    .swim-lane .swim-lane-title span {
+      display: inline-block;
+      transform: rotate(90deg);
+      transform-origin: bottom left; }
