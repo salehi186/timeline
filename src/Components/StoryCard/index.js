@@ -1,15 +1,6 @@
 import React from 'react';
 import './style.css';
-
-function SwitchButtonSet(props){
-
-}
-function Button(props){
-  return     <button className="btn"><i className={`fa fa-${props.Icon}`}></i> {props.Text||""}</button>
-
-}
-
-
+import {Button} from '../Button';
 
 
 export default function StoryCard(props) {
