@@ -20,7 +20,9 @@ export default function SwimLane(props) {
             )
             .join(" ")
         }}
-        ><div className="swim-lane-title">
+        ><div className="swim-lane-title" style={{
+		display:props.Title?"":"none"
+		}}>
         <span>
         {props.Title||""} 
         </span>

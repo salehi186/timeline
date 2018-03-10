@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/iojs /usr/share/yarn/bin/yarn.js build-css
+  /usr/local/bin/iojs /usr/share/yarn/bin/yarn.js watch-css
 
 PATH: 
   /home/ali/perl5/bin:/home/ali/perl5/bin:/home/ali/perl5/bin:/opt/jdk1.8.0_66/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/ali/.vimpkg/bin
@@ -25,6 +25,9 @@ npm manifest:
       "react-scripts": "1.1.1"
     },
     "scripts": {
+      "build-css": "node-sass-chokidar src/ -o src/",
+      "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+  
       "start": "react-scripts start",
       "build": "react-scripts build",
       "test": "react-scripts test --env=jsdom",
@@ -6889,14 +6892,17 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: Command "build-css" not found.
-      at new MessageError (/usr/share/yarn/lib/cli.js:186:110)
-      at /usr/share/yarn/lib/cli.js:87307:17
-      at Generator.next (<anonymous>)
-      at step (/usr/share/yarn/lib/cli.js:98:30)
-      at /usr/share/yarn/lib/cli.js:116:14
-      at Promise (<anonymous>)
-      at F (/usr/share/yarn/lib/cli.js:23451:28)
-      at /usr/share/yarn/lib/cli.js:95:12
-      at runCommand (/usr/share/yarn/lib/cli.js:87312:22)
-      at Object.<anonymous> (/usr/share/yarn/lib/cli.js:87412:14)
+  Error: Command failed.
+  Exit signal: SIGHUP
+  Command: sh
+  Arguments: -c npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive
+  Directory: /home/ali/projects/github/timeline
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/share/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/share/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/share/yarn/lib/cli.js:30281:17)
+      at emitTwo (events.js:125:13)
+      at ChildProcess.emit (events.js:213:7)
+      at maybeClose (internal/child_process.js:927:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)

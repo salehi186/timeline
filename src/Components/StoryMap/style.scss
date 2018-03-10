@@ -4,13 +4,27 @@
 }
 
 .story-map {
+	
     position: relative;
     width: 300%;
     height: 100%;
-    padding: 0;
+    padding:2em 0 0 0;
     margin: 0;
     overflow: auto;
     top: 0px;
     left: 0px; //padding-top:20px; Making space for top toolbar
 }
-
+.toolbar {
+	right:0;
+	top:0;
+	left:0;
+	position:fixed;
+	background-color:black;
+//	width:50px;
+	z-index:20;	
+	border: solid 2px black;
+	&>*{
+		margin:2px;
+		padding: 5px;
+	}
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import SwimLane from '../SwimLane';
 import StoryCard from  '../StoryCard';
 import TimeLine from '../TimeLine';
+import {Button}  from '../Button';
 import './style.css';
 
 
@@ -9,6 +10,7 @@ import './style.css';
 class StoryMap extends React.Component {
     constructor(props) {
       super(props);
+	this.lastId=2;
       this.state = {
         swimLanes: [
           { id:1,title: "Epics", jql: `project=Frontend AND issuetype=Epic`,issues:[] }
@@ -18,7 +20,18 @@ class StoryMap extends React.Component {
       for(let s of this.state.swimLanes)
         this.FetchIssues(s);
     }
-    FetchIssues(swimLane) {
+   
+
+	AddSwimLane(){
+		let title=prompt("Please Set The SwimLane Title");
+		let jql=prompt("Please Enter t");
+		if(title && jql) {
+			this.setState({
+			 swimlanes:[...this.state.swimLanes,{id:++this.lastId,title:title,jql:jql,issues:[]}] });
+		}
+	}
+
+     FetchIssues(swimLane) {
       let url = `https://cors-anywhere.herokuapp.com/https://pinguintest.atlassian.net/rest/api/2/search?jql=${swimLane.jql} ORDER BY duedate`;
       fetch(url, {
         method: "GET",
@@ -87,8 +100,16 @@ class StoryMap extends React.Component {
                  }
               )
            }
-          <div className="time-line-holder" >
-            
+         
+	<div  className="toolbar" >
+		<Button Text="Tree" Icon="code-branch" />
+		<Button Text="Bars" Icon="sync" />
+		<Button Text="swimlane"  Icon="plus-circle" Click={()=>alert(12)}/>
+		
+	</div> 
+
+	 <div className="time-line-holder" >
+           
             <TimeLine StartDate={startSlot} slots={slotCount} />
           </div>
         </div>
