@@ -5,12 +5,10 @@ import TimeLine from '../TimeLine';
 import {Button}  from '../Button';
 import './style.css';
 
-
-
 class StoryMap extends React.Component {
     constructor(props) {
       super(props);
-	this.lastId=2;
+	    this.lastId=2;
       this.state = {
         swimLanes: [
           { id:1,title: "Epics", jql: `project=Frontend AND issuetype=Epic`,issues:[] }
@@ -23,11 +21,13 @@ class StoryMap extends React.Component {
    
 
 	AddSwimLane(){
+    //Todo: Add A dialog box for getting new Jql Informations.
 		let title=prompt("Please Set The SwimLane Title");
-		let jql=prompt("Please Enter t");
+		let jql=prompt("Please Enter the JQL");
 		if(title && jql) {
-			this.setState({
-			 swimlanes:[...this.state.swimLanes,{id:++this.lastId,title:title,jql:jql,issues:[]}] });
+    let newSwimLane={id:++this.lastId,title:title,jql:jql,issues:[]};
+      this.setState({swimLanes:[...this.state.swimLanes,newSwimLane] });
+      this.FetchIssues(newSwimLane);
 		}
 	}
 
@@ -102,14 +102,12 @@ class StoryMap extends React.Component {
            }
          
 	<div  className="toolbar" >
-		<Button Text="Tree" Icon="code-branch" />
-		<Button Text="Bars" Icon="sync" />
-		<Button Text="swimlane"  Icon="plus-circle" Click={()=>alert(12)}/>
-		
+		<Button Text="Tree" Icon="code-branch" Click={()=>alert("Under Constraction ...")} />
+		<Button Text="Bars" Icon="sync"  Click={()=>alert("Under Constraction ...")} />
+		<Button Text="swimlane"  Icon="plus-circle" Click={this.AddSwimLane.bind(this)}/>
 	</div> 
 
 	 <div className="time-line-holder" >
-           
             <TimeLine StartDate={startSlot} slots={slotCount} />
           </div>
         </div>
